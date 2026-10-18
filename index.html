@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentina Chambilla | Fullstack Developer & AI Engineer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #38bdf8;
+    --accent-2: #818cf8;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: #334155;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%);
+    animation: pulse 6s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+  header h1 {
+    font-size: 2.4rem;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+  header .subtitle {
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    position: relative;
+  }
+  header .contact {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    position: relative;
+  }
+  header .contact a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  header .contact a:hover { color: var(--accent); }
+  header .contact i { color: var(--accent); margin-right: 0.4rem; }
+
+  /* SECTIONS */
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  section:hover { border-color: var(--accent); }
+  section h2 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.8rem;
+  }
+  section h3 {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin: 1.2rem 0 0.3rem;
+  }
+  section h3 .company { color: var(--accent-2); font-weight: 500; font-size: 0.95rem; }
+  section .period { color: var(--muted); font-size: 0.85rem; font-style: italic; margin-bottom: 0.5rem; }
+  section ul { list-style: none; padding-left: 0; }
+  section ul li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+    color: var(--muted);
+  }
+  section ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+  p { color: var(--muted); margin-bottom: 1rem; }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+  .tag {
+    background: rgba(56,189,248,0.12);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    border: 1px solid rgba(56,189,248,0.3);
+    transition: all 0.3s;
+  }
+  .tag:hover {
+    background: var(--accent);
+    color: var(--bg);
+    transform: translateY(-2px);
+  }
+
+  /* SKILLS GRID */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .skill-group {
+    background: rgba(15,23,42,0.6);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .skill-group h4 { color: var(--accent-2); font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .skill-group p { font-size: 0.85rem; margin: 0; }
+
+  /* BADGES */
+  .badges { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(129,140,248,0.12);
+    border: 1px solid rgba(129,140,248,0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 0.9rem;
+  }
+  .badge i { color: var(--accent-2); }
+
+  /* PUBLICATION CARD */
+  .pub {
+    background: rgba(15,23,42,0.6);
+    padding: 1.2rem;
+    border-radius: 10px;
+    border-left: 3px solid var(--accent);
+    margin-bottom: 1rem;
+  }
+  .pub h3 { margin-top: 0; }
+  .pub .venue { color: var(--accent-2); font-size: 0.85rem; font-style: italic; margin-bottom: 0.5rem; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    section { padding: 1.5rem; }
+    header .contact { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <h1>Valentina Milagros Chambilla Perca</h1>
+    <p class="subtitle">Fullstack Developer | AI Engineer | Researcher</p>
+    <div class="contact">
+      <span><i class="fas fa-map-marker-alt"></i>Arequipa, Perú</span>
+      <a href="https://www.linkedin.com/in/valentina-milagros-chambilla-perca/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+      <a href="mailto:vchambillap@unsa.edu.pe"><i class="fas fa-envelope"></i>vchambillap@unsa.edu.pe</a>
+      <a href="tel:+51994422549"><i class="fas fa-phone"></i>+51 994 422 549</a>
+    </div>
+  </header>
+
+  <!-- SOBRE MÍ -->
+  <section>
+    <h2><i class="fas fa-user-astronaut"></i> Sobre mí</h2>
+    <p>
+      Desarrolladora Full Stack con experiencia en el desarrollo de aplicaciones web utilizando
+      <strong>Python, FastAPI, Angular, Vue.js, Next.js y Node.js</strong>, integrando servicios de
+      inteligencia artificial, bases de datos SQL y despliegues cloud. He participado en el diseño de
+      <strong>APIs REST</strong>, arquitecturas backend escalables e integración de modelos de IA mediante
+      <strong>FastAPI y LangChain</strong>. Complemento mi experiencia con proyectos de investigación aplicada
+      y desarrollo de software, destacando por mi capacidad de aprendizaje, autonomía y trabajo en equipos
+      multidisciplinarios.
+    </p>
+  </section>
+
+  <!-- EDUCACIÓN -->
+  <section>
+    <h2><i class="fas fa-graduation-cap"></i> Educación</h2>
+
+    <h3>Universidad de Oklahoma <span class="company">— Research Internship</span></h3>
+    <p class="period">Departamento de Ingeniería Eléctrica y Computación</p>
+    <ul>
+      <li>Proyecto de investigación en imágenes biomédicas y detección temprana de cáncer de piel mediante inteligencia artificial.</li>
+    </ul>
+
+    <h3>Universidad Nacional de San Agustín de Arequipa <span class="company">— Bachelor of Systems Engineering</span></h3>
+    <ul>
+      <li>Junior Researcher at CiTeSoft (Technology Research Center).</li>
+      <li>Student Chapter Chair IEEE 2025 · Chair ACM UNSA 2023.</li>
+      <li>Fundadora Chair IEEE Computer Society 2023 y 2024.</li>
+    </ul>
+
+    <h3>Instituto de Informática y Telecomunicaciones (UNJBG) <span class="company">— Técnico en Programación y Base de Datos</span></h3>
+    <ul>
+      <li>Desarrollo de aplicativos en Android Studio (Java 8), Desarrollo Web con Laravel PHP y Administración de Bases de Datos con MySQL.</li>
+    </ul>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section>
+    <h2><i class="fas fa-briefcase"></i> Experiencia Profesional</h2>
+
+    <h3>Junior Researcher <span class="company">| CiTeSoft — Arequipa, Perú</span></h3>
+    <p class="period">07/2024 – 11/2024</p>
+    <ul>
+      <li>Desarrollo de servicios backend y APIs REST utilizando FastAPI para proyectos de investigación basados en IA.</li>
+      <li>Diseño e implementación de flujos Retrieval-Augmented Generation (RAG) mediante LangChain e integración con LLMs.</li>
+      <li>Desarrollo de plataformas para generación y automatización de documentos mediante inteligencia artificial.</li>
+      <li>Implementación y despliegue de modelos de Visión por Computadora en dispositivos Raspberry Pi para Edge AI.</li>
+      <li>Desarrollo de plataformas para captura, procesamiento y análisis de datos biomédicos.</li>
+      <li>Integración de dispositivos embebidos mediante Bluetooth Low Energy (BLE).</li>
+    </ul>
+
+    <h3>Research Intern <span class="company">| University of Oklahoma — Norman, USA</span></h3>
+    <p class="period">01/2026 – 04/2026</p>
+    <ul>
+      <li>Desarrollo de frontend utilizando Angular.</li>
+      <li>Desarrollo de backend con NestJS.</li>
+      <li>Desarrollo de servicios de IA utilizando Python FastAPI.</li>
+      <li>Integración de microservicios mediante Kong Gateway.</li>
+      <li>Diseño de APIs para comunicación entre módulos.</li>
+      <li>Trabajo colaborativo bajo arquitectura basada en servicios.</li>
+    </ul>
+
+    <h3>Software Developer <span class="company">| MICRODATA</span></h3>
+    <ul>
+      <li>Desarrollo de soluciones backend utilizando Express y Microservicios (Azure DevOps con AWS Lambdas).</li>
+      <li>Integración de APIs con servicios cloud.</li>
+      <li>Automatización de procesos documentales mediante OCR e inteligencia artificial.</li>
+      <li>Integración con servicios AWS directo en FrontEnd por medio de Amplify.</li>
+      <li>Desarrollo de soluciones empresariales para procesamiento documental.</li>
+    </ul>
+
+    <h3>Software Developer <span class="company">| EXAVYS — Arequipa, Perú</span></h3>
+    <p class="period">07/2025 – 06/2026</p>
+    <ul>
+      <li>Desarrollo Multiplataforma para MacOS, Windows, Android y iOS en Flutter.</li>
+      <li>Desarrollo de servicios backend y APIs REST utilizando FastAPI para plataformas empresariales.</li>
+      <li>Implementación y despliegue de aplicaciones en Azure App Service (Web Apps).</li>
+      <li>Automatización de procesos de despliegue continuo mediante GitHub Actions (CI/CD).</li>
+      <li>Integración de Google Gemini API para generación automática de resúmenes mediante modelos de lenguaje.</li>
+      <li>Desarrollo e implementación de algoritmos de forecasting para análisis y proyección de proyectos.</li>
+      <li>Diseño e integración de servicios cloud utilizando Microsoft Azure.</li>
+      <li>Colaboración con equipos multidisciplinarios bajo metodologías ágiles.</li>
+    </ul>
+  </section>
+
+  <!-- PROYECTOS IA -->
+  <section>
+    <h2><i class="fas fa-robot"></i> Proyectos de Inteligencia Artificial</h2>
+
+    <h3>Ganbaru — Plataforma Inteligente para Generación de Documentación Educativa</h3>
+    <p class="period">DevNetwork [AI + ML] Hackathon 2026</p>
+    <ul>
+      <li>Desarrollo del frontend utilizando Next.js, React y TypeScript, implementando una interfaz moderna para la generación y gestión de documentos educativos.</li>
+      <li>Desarrollo del backend con Python y FastAPI, implementando APIs REST para la orquestación de modelos de IA.</li>
+      <li>Diseño e implementación de una arquitectura RAG (Retrieval-Augmented Generation) utilizando LangChain y modelos de lenguaje.</li>
+      <li>Automatización de la generación de sesiones de aprendizaje, unidades didácticas y otros documentos educativos mediante IA.</li>
+      <li>Integración entre frontend y backend mediante APIs REST y despliegue de la plataforma en la nube.</li>
+      <li>Trabajo colaborativo siguiendo control de versiones con Git/GitHub.</li>
+    </ul>
+
+    <h3>MICAELA — Plataforma Inteligente para Auditoría de Evidencia sobre Violencia de Género</h3>
+    <p class="period">DAT4CCIÓN: Datatón regional para la igualdad 2026 - ONU Mujeres América Latina y el Caribe</p>
+    <ul>
+      <li>Desarrollo de APIs backend para servicios analíticos.</li>
+      <li>Implementación de flujos RAG para recuperación semántica de información.</li>
+      <li>Desarrollo de pipelines de procesamiento y análisis de datos.</li>
+      <li>Integración de dashboards narrativos para apoyo en la toma de decisiones.</li>
+      <li>Desarrollo de servicios para análisis de evidencia mediante inteligencia artificial.</li>
+    </ul>
+  </section>
+
+  <!-- PUBLICACIONES -->
+  <section>
+    <h2><i class="fas fa-book-open"></i> Publicaciones</h2>
+
+    <div class="pub">
+      <h3>Emotion-Aware Assistive System with Wearable Haptic Feedback for Visual Impairment</h3>
+      <p class="venue">IEEE CBMS 2026: 39th IEEE International Symposium on Computer-Based Medical Systems</p>
+      <ul>
+        <li>Implementación y optimización de modelos de reconocimiento facial de emociones en Raspberry Pi.</li>
+        <li>Integración de sistema de retroalimentación háptica mediante BLE.</li>
+        <li>Desarrollo de infraestructura Edge AI para asistencia a personas con discapacidad visual.</li>
+      </ul>
+    </div>
+
+    <div class="pub">
+      <h3>Bridging the Rehabilitation Gap: A Virtual Reality Approach to Fine Motor Skill Recovery with Instrumented Glove</h3>
+      <p class="venue">IEEE IHTC 2024: 2024 IEEE International Humanitarian Technologies Conference</p>
+      <ul>
+        <li>Integración hardware-software para guante instrumentado de rehabilitación.</li>
+        <li>Captura, procesamiento y análisis de datos clínicos.</li>
+        <li>Desarrollo de métricas y visualizaciones para evaluación del progreso terapéutico.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- STACK TECNOLÓGICO -->
+  <section>
+    <h2><i class="fas fa-code"></i> Stack Tecnológico</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Lenguajes</h4>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">C#</span><span class="tag">Java</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Backend</h4>
+        <div class="tags">
+          <span class="tag">FastAPI</span><span class="tag">Express.js</span><span class="tag">Nest.js</span><span class="tag">Node.js</span><span class="tag">APIs REST</span><span class="tag">Programación Asíncrona</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Frontend</h4>
+        <div class="tags">
+          <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Angular</span><span class="tag">Vue.js</span><span class="tag">HTML5</span><span class="tag">CSS3</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Inteligencia Artificial</h4>
+        <div class="tags">
+          <span class="tag">LLMs</span><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">Prompt Engineering</span><span class="tag">OpenCV</span><span class="tag">TensorFlow</span><span class="tag">Edge AI</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Cloud & DevOps</h4>
+        <div class="tags">
+          <span class="tag">Microsoft Azure</span><span class="tag">AWS</span><span class="tag">Vercel</span><span class="tag">Azure DevOps</span><span class="tag">Git</span><span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Bases de Datos</h4>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span><span class="tag">SQL Server</span><span class="tag">MySQL</span><span class="tag">SQLite</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIDERAZGO -->
+  <section>
+    <h2><i class="fas fa-trophy"></i> Liderazgo</h2>
+    <div class="badges">
+      <span class="badge"><i class="fas fa-medal"></i> Gold Microsoft Learn Student Ambassador</span>
+      <span class="badge"><i class="fas fa-users"></i> Miembro IEEE</span>
+      <span class="badge"><i class="fas fa-users"></i> Miembro ACM</span>
+    </div>
+  </section>
+
+  <!-- ÁREAS DE INTERÉS -->
+  <section>
+    <h2><i class="fas fa-lightbulb"></i> Áreas de Interés</h2>
+    <div class="tags">
+      <span class="tag">Aprendizaje Automático</span>
+      <span class="tag">Deep Learning</span>
+      <span class="tag">Visión por Computadora</span>
+      <span class="tag">IA Biomédica</span>
+      <span class="tag">Edge AI</span>
+      <span class="tag">Sistemas Embebidos</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><i class="fas fa-quote-left"></i> Construyendo soluciones inteligentes que generan impacto real. <i class="fas fa-quote-right"></i></p>
+  </footer>
+
+</div>
+</body>
+</html>
